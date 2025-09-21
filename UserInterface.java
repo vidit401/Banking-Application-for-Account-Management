@@ -7,6 +7,7 @@ class Account {
     String email;
     String phoneNumber;
 
+    // I am setting up the account details when a new account is created
     public Account(int accountNumber, String accountHolderName, double balance, String email, String phoneNumber) {
         this.accountNumber = accountNumber;
         this.accountHolderName = accountHolderName;
@@ -15,6 +16,7 @@ class Account {
         this.phoneNumber = phoneNumber;
     }
 
+    // Adding the money in the account
     public String deposit(double amount) {
         if (amount > 0) {
             balance = balance + amount;
@@ -24,6 +26,7 @@ class Account {
         }
     }
 
+    // Taking money out of the account
     public String withdraw(double amount) {
         if (amount <= 0) {
             return "Amount must be positive";
@@ -36,6 +39,7 @@ class Account {
         }
     }
 
+    // Showing account details here
     public String displayAccountDetails() {
         return "Account Number: " + accountNumber + "\n"
                 + "Account Holder Name: " + accountHolderName + "\n"
@@ -44,6 +48,7 @@ class Account {
                 + "Phone Number: " + phoneNumber;
     }
 
+    // for updating email and phone number of accounts
     public String updateContactDetails(String email, String phoneNumber) {
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -51,11 +56,15 @@ class Account {
     }
 }
 
+
 public class UserInterface {
+
+    //array here for accounts keeping
     Account[] accounts = new Account[100];
     int count = 0;
     Scanner scanner = new Scanner(System.in);
 
+    // new account creation process
     public String createAccount() {
         System.out.print("Enter account holder name: ");
         String name = scanner.nextLine();
@@ -76,6 +85,7 @@ public class UserInterface {
         return "Account created successfully with Account Number: " + accountNumber;
     }
 
+    // this is the deposit process
     public String performDeposit() {
         System.out.print("Enter account number: ");
         int accNo;
@@ -99,6 +109,7 @@ public class UserInterface {
         return "Account not found";
     }
 
+    // This is the withdrawl process
     public String performWithdrawal() {
         System.out.print("Enter account number: ");
         int accNo;
@@ -122,6 +133,7 @@ public class UserInterface {
         return "Account not found";
     }
 
+    // showing account details to user of a specific account which is entered
     public String showAccountDetails() {
         System.out.print("Enter account number: ");
         int accNo;
@@ -138,6 +150,7 @@ public class UserInterface {
         return "Account not found";
     }
 
+    // updating contact info of the account entered
     public String updateContact() {
         System.out.print("Enter account number: ");
         int accNo;
@@ -158,6 +171,7 @@ public class UserInterface {
         return "Account not found";
     }
 
+    // main menu that is choices
     public int mainMenu() {
         while (true) {
             System.out.println("\nWelcome to Vidit Bank - KR Mangalam University Branch");
@@ -187,6 +201,7 @@ public class UserInterface {
         }
     }
 
+    // running the program (UI)
     public static void main(String[] args) {
         UserInterface ui = new UserInterface();
         ui.mainMenu();
